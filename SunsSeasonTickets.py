@@ -1,59 +1,34 @@
-    import streamlit as st 
-    from mnemonic import Mnemonic 
-    from bip44 import Wallet
-    from web3 import Account
-    import os
-    from dotenv import load_dotenv
-    load_dotenv()
-
-    ####################
-    # import functions
-    from Mnemonic import generate_mnemonic
-
-    # Define and connect a new Web3 provider
-    w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
-
-    @st.cache(allow_output_mutation=True)
-    def load_contract():
-
-        #### THIS NEEDS TO BE UPDATED
-        # Load the contract ABI
-        with open(Path('./contracts/compiled/artwork_abi.json')) as f:
-            artwork_abi = json.load(f)
-
-        contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
-
-        # Load the contract
-        contract = w3.eth.contract(
-            address=contract_address,
-            abi=artwork_abi
-        )
-
-        return contract
-
-    contract = load_contract()
-
-    # Define and connect a new Web3 provider
-    w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
-
-    @st.cache(allow_output_mutation=True)
-    def load_contract():
-
-        #### THIS NEEDS TO BE UPDATED
-        # Load the contract ABI
-        with open(Path('./contracts/compiled/artwork_abi.json')) as f:
-            artwork_abi = json.load(f)
-
-        contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
-
-        # Load the contract
-        contract = w3.eth.contract(
-            address=contract_address,
-            abi=artwork_abi
-        )
-
-        return contract
+import os
+import json
+from web3 import Web3
+from pathlib import Path
+from dotenv import load_dotenv
+import streamlit as st
 st.set_page_config(layout="wide")
+load_dotenv()
+
+# Define and connect a new Web3 provider
+w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
+
+@st.cache(allow_output_mutation=True)
+def load_contract():
+
+        #### THIS NEEDS TO BE UPDATED
+        # Load the contract ABI
+    with open(Path('./compiled/trial.json')) as f:
+            trial_abi = json.load(f)
+
+    contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
+
+        # Load the contract
+    contract = w3.eth.contract(
+        address=contract_address,
+        abi=trial_abi
+        )
+
+    return contract
+
+contract = load_contract()
 
 st.title('Phoenix Suns 2023 Season Tickets')
 
