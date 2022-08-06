@@ -9,28 +9,6 @@ load_dotenv()
 ####################
 # import functions
 from Mnemonic import generate_mnemonic
-
-# Define and connect a new Web3 provider
-w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
-
-@st.cache(allow_output_mutation=True)
-def load_contract():
-
-    #### THIS NEEDS TO BE UPDATED
-    # Load the contract ABI
-    with open(Path('./contracts/compiled/artwork_abi.json')) as f:
-        artwork_abi = json.load(f)
-
-    contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
-
-    # Load the contract
-    contract = w3.eth.contract(
-        address=contract_address,
-        abi=artwork_abi
-    )
-
-    return contract
-
 contract = load_contract()
 import os
 import json
@@ -48,7 +26,7 @@ def load_contract():
 
     #### THIS NEEDS TO BE UPDATED
     # Load the contract ABI
-    with open(Path('./contracts/compiled/artwork_abi.json')) as f:
+    with open(Path('Desktop/PHXSunsNFT/compiled/trial.json')) as f:
         artwork_abi = json.load(f)
 
     contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
