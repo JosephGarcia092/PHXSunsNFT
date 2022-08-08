@@ -99,9 +99,22 @@ st.sidebar.write(included)
 st.sidebar.markdown("## Cost in Ether")
 cost = packages_database[select_package][1]
 st.sidebar.write(cost)
-    
+
+
+
+
+
+## buy nft section 
+
+
+
+
 ### Generate NFT button
 transaction_id = st.number_input("Enter transaction hash id to display:", step=1)
 if st.button("Generate NFT"):
     nft_owner = contract.functions.ownerOf(transaction_id).call()
     st.write(f"This NFT is awarded to {transaction_id}")
+
+    
+    
+    
