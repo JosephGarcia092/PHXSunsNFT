@@ -1,16 +1,24 @@
 pragma solidity ^0.5.5;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC721/ERC721Full.sol";
-/*import "./utils/introspection/IERC165.sol";
-interface IERC2981 is IERC165 {
-    /**
-     * @dev Returns how much royalty is owed and to whom, based on a sale price that may be denominated in any unit of
-     * exchange. The royalty amount is denominated and should be paid in that same unit of exchange.
-     
-    function royaltyInfo(uint256 tokenId, uint256 salePrice)
-        external
-        view
-        returns (address receiver, uint256 royaltyAmount);
+
+/* general structer of the website
+KEY NOTE:
+ *Initial Buyer* 
+step one : 
+buy the Nft. using ganache well have the 10 address or people that are buying the Nft. 
+first account in ganache will be the "company" who deploys the contract so we have to do an initialBuyNft
+to get the first person who will buy from the "company"
+the nft needs to have a name, price in eth, who is selling it, and buyer
+once the sale has been completed, the buyer of the Nft should then register the Nft and have a mapping of Nft
+
+step two:
+once we have gone over the buy of the Nft we want to make sure that we can get the _mintrandomly
+to pick one of the 10 wallets to give the ULT Nft. 
+
+step three:
+input the royalty function to allow the "inital owner" of the Nft to be able to collect royalties on post buy
+
 */
 contract seasonTicket is ERC721Full {
     constructor() public ERC721Full("Suns", "PHX") {}
@@ -19,37 +27,41 @@ contract seasonTicket is ERC721Full {
     struct Nft {
         string name;// of the NFT
         uint256 price;// listing price 
+        address payable initialBuyer;// who first bought the Nft
         address payable seller;// who is selling
-        address payable buyer;// who is buying 
-
     }
     mapping(uint256 => Nft) public nftCollection;
+    
+    function initialBuyNft(
+        string memory name, 
+        uint256  price, 
+        address payable initialBuyer, 
+        address payable seller) public view 
+        returns(name, price, memory initialBuyer, seller);
 
-    function registerNft (
-        address owner,
+    function InitialRegisterNft (
+        address payable initialBuyer,
         string memory name,
         uint256 price,
         string memory tokenURI
     ) public returns (uint256) {
         uint256 tokenId = totalSupply();
-        _mint(owner, tokenId);
+        _mint(initialBuyer, tokenId);
         _setTokenURI(tokenId, tokenURI);
-        nftCollection[tokenId] = Nft(name, price, seller);
-
+        nftCollection[tokenId] = Nft(name, price, initialBuyer, seller);
         return tokenId;
     }
 
-    function buyNft(string name, address payable seller, address payable buyer, unit256 price) public {
-        require(recipient == buyer || recipient == seler, "You are not authorized to sell this");
+    function secondBuyNft(string memory name, address payable seller, address payable initialBuyer, uint price) public {
+        require(initialBuyer == seller, "You are not authorized to sell this");
         require(address(this).balance >= price, "You dont have funds for this");
-        return msg.sender.transfer(price)
-    
-
     }
-}
 /*
- function mintRandomly() public{
-  uint tokenID = /*randomly generate an ID that is within the totalSupply
- _safeMint(to, tokenID)
+     function mintRandomly() public {
+         uint tokenID = //randomly generate an ID that is within the totalSupply
+         _safeMint(to, tokenID);}
+*/
 
-}*/
+  function() external payable {}
+
+}
