@@ -36,11 +36,13 @@ contract seasonTicket is ERC721Full {
         string memory name, 
         uint256  price, 
         address payable initialBuyer, 
-        address payable seller) public view 
-        returns(name, price, memory initialBuyer, seller);
+        address payable seller) public view returns (string memory, uint256, address, address) {
+        return (name, price, initialBuyer, seller);
+    }
 
     function InitialRegisterNft (
         address payable initialBuyer,
+        address payable seller,
         string memory name,
         uint256 price,
         string memory tokenURI
@@ -52,7 +54,11 @@ contract seasonTicket is ERC721Full {
         return tokenId;
     }
 
-    function secondBuyNft(string memory name, address payable seller, address payable initialBuyer, uint price) public {
+    function secondBuyNft(
+        string memory name, a
+        ddress payable seller, 
+        address payable initialBuyer, 
+        uint price) public {
         require(initialBuyer == seller, "You are not authorized to sell this");
         require(address(this).balance >= price, "You dont have funds for this");
     }
