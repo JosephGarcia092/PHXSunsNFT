@@ -31,36 +31,39 @@ contract seasonTicket is ERC721Full {
         address payable seller;// who is selling
     }
     mapping(uint256 => Nft) public nftCollection;
-    
-    function initialBuyNft(
-        string memory name, 
-        uint256  price, 
-        address payable initialBuyer, 
-        address payable seller) public view returns (string memory, uint256, address, address) {
-        return (name, price, initialBuyer, seller);
+
+/* here i set the function to pay the contract directly. 
+
+*/
+    function buyNft(string memory name, uint256 price, address initialBuyer) public payable { // function to send the ether to contract
+    // keep the body clear. only takes the price we set and the name of the NFT. 
     }
+
+/* Maybe put a get_balance of contract function? 
+    
+    *get_balance()
+*/
 
     function InitialRegisterNft (
         address payable initialBuyer,
         address payable seller,
         string memory name,
-        uint256 price,
-        string memory tokenURI
+        uint256 price
     ) public returns (uint256) {
         uint256 tokenId = totalSupply();
         _mint(initialBuyer, tokenId);
-        _setTokenURI(tokenId, tokenURI);
         nftCollection[tokenId] = Nft(name, price, initialBuyer, seller);
         return tokenId;
     }
 
     function secondBuyNft(
-        string memory name, a
-        ddress payable seller, 
+        string memory name,
+        address payable seller, 
         address payable initialBuyer, 
-        uint price) public {
-        require(initialBuyer == seller, "You are not authorized to sell this");
+        uint price) public view returns (string memory, address, address, uint) {
+        require(seller == initialBuyer, "You are not authorized to sell this");
         require(address(this).balance >= price, "You dont have funds for this");
+        return (name, seller, initialBuyer, price);
     }
 /*
      function mintRandomly() public {
