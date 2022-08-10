@@ -21,6 +21,7 @@ input the royalty function to allow the "inital owner" of the Nft to be able to 
 
 */
 contract seasonTicket is ERC721Full {
+    uint public nftBalance;
     constructor() public ERC721Full("Suns", "PHX") {}
 // struct of the NFT (name of nft, how much, who is selling)
 
@@ -32,18 +33,13 @@ contract seasonTicket is ERC721Full {
     }
     mapping(uint256 => Nft) public nftCollection;
 
-/* here i set the function to pay the contract directly. 
-
-*/
-    function buyNft(string memory name, uint256 price, address initialBuyer) public payable { // function to send the ether to contract
-    // keep the body clear. only takes the price we set and the name of the NFT. 
+        function buyNft (string memory name, address initialBuyer) public payable {
+            nftBalance = address(this).balance;
+        // buyer sends money to the seasonTicket contract. 
+        // nftBalance confirms the money is in the seasonTicket contract
     }
-
-/* Maybe put a get_balance of contract function? 
-    
-    *get_balance()
-*/
-
+// the contract deployer (first account) pays the gas fees
+// with the initialRegisterNft 
     function InitialRegisterNft (
         address payable initialBuyer,
         address payable seller,
@@ -55,7 +51,8 @@ contract seasonTicket is ERC721Full {
         nftCollection[tokenId] = Nft(name, price, initialBuyer, seller);
         return tokenId;
     }
-
+// maybe make an event. for the flip. not a function to make the code less bc its an instant 
+// one time hapening. \
     function secondBuyNft(
         string memory name,
         address payable seller, 
