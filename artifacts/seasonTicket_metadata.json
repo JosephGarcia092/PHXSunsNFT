@@ -90,49 +90,6 @@
 				"type": "function"
 			},
 			{
-				"constant": true,
-				"inputs": [
-					{
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"name": "seller",
-						"type": "address"
-					},
-					{
-						"name": "initialBuyer",
-						"type": "address"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					}
-				],
-				"name": "secondBuyNft",
-				"outputs": [
-					{
-						"name": "",
-						"type": "string"
-					},
-					{
-						"name": "",
-						"type": "address"
-					},
-					{
-						"name": "",
-						"type": "address"
-					},
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"constant": false,
 				"inputs": [
 					{
@@ -152,6 +109,49 @@
 				"outputs": [],
 				"payable": false,
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"name": "seller",
+						"type": "address"
+					},
+					{
+						"name": "initialBuyer",
+						"type": "address"
+					},
+					{
+						"name": "price",
+						"type": "uint256"
+					}
+				],
+				"name": "flipNft",
+				"outputs": [
+					{
+						"name": "",
+						"type": "string"
+					},
+					{
+						"name": "",
+						"type": "address"
+					},
+					{
+						"name": "",
+						"type": "address"
+					},
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": true,
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -761,9 +761,9 @@
 			]
 		},
 		"seasonTicketsNft.sol": {
-			"keccak256": "0x84cca19b8a1f940b5e0789c9eb53f06848a4e8212252fb6d8738b442a7f747ab",
+			"keccak256": "0xa79ea5d182bc6be43e50401094093e3dec818c93a44f333e14894d5e2e373f39",
 			"urls": [
-				"bzzr://850170815e4fd6334629b5b7beafbf781d79fd9ad9cdd56f09a14eeeb00a14eb"
+				"bzzr://f9db1b9a6c043fe89860bafa18985a9ec1d0e7b0ccc0338d1ca326eb9c77c1f7"
 			]
 		}
 	},

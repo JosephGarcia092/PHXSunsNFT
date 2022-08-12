@@ -63,7 +63,6 @@ contract seasonTicket is ERC721Full {
         uint price) public payable returns (string memory, address, address, uint) {
         require(seller == initialBuyer, "You are not authorized to sell this");
         require(address(this).balance >= price, "You dont have funds for this");
-        flipBalance = address(this).balance;
         return (name, seller, initialBuyer, price);
     }
 
