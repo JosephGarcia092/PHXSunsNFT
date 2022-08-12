@@ -30,6 +30,7 @@ def load_contract():
 
 contract = load_contract()
 
+### Setting up front end
 st.title('Phoenix Suns 2023 Season Tickets')
 
 st.header('Welcome to the Future! Introducing NFT Season Tickets!')
@@ -89,7 +90,7 @@ def package():
         
 # Create a select box to choose a package
 st.sidebar.markdown("## Select a Package")
-select_package = st.sidebar.selectbox("Select a Package", packages)
+select_package = st.sidebar.selectbox("Packages", packages)
 
 st.sidebar.markdown("## What's Included")
 
@@ -100,21 +101,30 @@ st.sidebar.markdown("## Cost in Ether")
 cost = packages_database[select_package][1]
 st.sidebar.write(cost)
 
+st.sidebar.markdown("## Choose an Account")
+accounts = w3.eth.accounts
+address = st.sidebar.selectbox("Accounts", options=accounts)
+st.markdown("---")
 
+st.sidebar.markdown("## Check Your Balance")
 
-
-
-## buy nft section 
-
-
-
+#if st.button("Generate NFT"):
+    #contract.functions.awardCertificate(address, certificate_details).transact({'from': account, 'gas': 1000000})
 
 ### Generate NFT button
 transaction_id = st.number_input("Enter transaction hash id to display:", step=1)
+
 if st.button("Generate NFT"):
     nft_owner = contract.functions.ownerOf(transaction_id).call()
     st.write(f"This NFT is awarded to {transaction_id}")
+    
+if st.button("Generate NFT"):
+    st.image(image_list[0])
+    
+import random
+one = "1.0.png"
+two = "1.14.png"
+three = "1.3.png"
+random.shuffle(image_list)
 
-    
-    
-    
+image_list[0]
