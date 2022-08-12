@@ -32,11 +32,14 @@ contract seasonTicket is ERC721Full {
         address payable seller;// who is selling
     }
     mapping(uint256 => Nft) public nftCollection;
+    // mapping(string =>)
 
-        function buyNft (string memory name, address initialBuyer) public payable {
-            nftBalance = address(this).balance;
+    function buyNft (string memory name, address initialBuyer) public payable returns(string memory, address) {
+        // make a require ### here ###
+         nftBalance = address(this).balance;
         // buyer sends money to the seasonTicket contract. 
         // nftBalance confirms the money is in the seasonTicket contract
+        return(name, initialBuyer);
     }
 // the contract deployer (first account) pays the gas fees
 // with the initialRegisterNft 
@@ -53,15 +56,20 @@ contract seasonTicket is ERC721Full {
     }
 // maybe make an event. for the flip. not a function to make the code less bc its an instant 
 // one time hapening. \
-    function secondBuyNft(
+    function flipNft(
         string memory name,
         address payable seller, 
         address payable initialBuyer, 
-        uint price) public view returns (string memory, address, address, uint) {
+        uint price) public payable returns (string memory, address, address, uint) {
         require(seller == initialBuyer, "You are not authorized to sell this");
         require(address(this).balance >= price, "You dont have funds for this");
+        flipBalance = address(this).balance;
         return (name, seller, initialBuyer, price);
     }
+
+    // function corporateWithdrawl(
+    //     address payable seller,
+    // )
 /*
      function mintRandomly() public {
          uint tokenID = //randomly generate an ID that is within the totalSupply
