@@ -10,11 +10,10 @@ load_dotenv()
 # Define and connect a new Web3 provider
 w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 
+# Make sure contract loads only once
 @st.cache(allow_output_mutation=True)
 def load_contract():
-
-        #### THIS NEEDS TO BE UPDATED
-        # Load the contract ABI
+# Load the contract ABI
     with open(Path('./compiled/trial.json')) as f:
             trial_abi = json.load(f)
 
@@ -78,7 +77,7 @@ packages_database = {
 packages = ["Standard Package", "Ultra Package", "VIP Package"]
 
 def package():
-    """Display the database of Fintech Finders candidate information."""
+    """"""
     db_list = list(packages_database.values())
 
     for number in range(len(packages)):
@@ -106,25 +105,34 @@ accounts = w3.eth.accounts
 address = st.sidebar.selectbox("Accounts", options=accounts)
 st.markdown("---")
 
+
+tx_hash = contract.functions.buyNft(
+    name,
+    initialBuyer).transact({"from":w3.ethaccounts[0]})
+    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    st.write(receipt)
+st.markdown("---")
+
 st.sidebar.markdown("## Check Your Balance")
 
 #if st.button("Generate NFT"):
     #contract.functions.awardCertificate(address, certificate_details).transact({'from': account, 'gas': 1000000})
 
 ### Generate NFT button
-transaction_id = st.number_input("Enter transaction hash id to display:", step=1)
+transaction_id = st.number_input("Enter transaction hash id to display NFT:", step=1)
 
-if st.button("Generate NFT"):
-    nft_owner = contract.functions.ownerOf(transaction_id).call()
-    st.write(f"This NFT is awarded to {transaction_id}")
+#if st.button("Generate NFT"):
     
-if st.button("Generate NFT"):
-    st.image(image_list[0])
+    #nft_owner = contract.functions.ownerOf(transaction_id).call()
+    #st.write(f"This NFT is awarded to {transaction_id}")
     
 import random
 one = "1.0.png"
 two = "1.14.png"
 three = "1.3.png"
+image_list = [one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,two,two,two,two,two,two,two,two,three,three,three,three,three,three,three]
 random.shuffle(image_list)
 
-image_list[0]
+if st.button("Generate NFT"):
+    st.image(image_list[0])
+    
