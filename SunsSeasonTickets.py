@@ -105,18 +105,18 @@ accounts = w3.eth.accounts
 address = st.sidebar.selectbox("Accounts", options=accounts)
 st.markdown("---")
 
+tokens = contract.functions.totalSupply().call()
+name = st.selectbox("Choose an Art Token ID", list(range(tokens)))
+initialBuyer = st.selectbox
 
-tx_hash = contract.functions.buyNft(
-    name,
-    initialBuyer).transact({"from":w3.ethaccounts[0]})
+if st.button("Purchase Package"):
+    tx_hash = contract.functions.buyNft(
+        name,
+        address
+    ).transact({"from":w3.ethaccounts[0]})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write(receipt)
-st.markdown("---")
-
-st.sidebar.markdown("## Check Your Balance")
-
-#if st.button("Generate NFT"):
-    #contract.functions.awardCertificate(address, certificate_details).transact({'from': account, 'gas': 1000000})
+    st.markdown("---")
 
 ### Generate NFT button
 transaction_id = st.number_input("Enter transaction hash id to display NFT:", step=1)
