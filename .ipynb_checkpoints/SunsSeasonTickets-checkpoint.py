@@ -114,22 +114,25 @@ cost = packages_database[select_package][1]
 st.sidebar.write(cost)
 
 ### Choose account to purchase from
+## what we did was set the accounts to be more dynamic and set it to a variable account
 st.sidebar.markdown("## Choose an Account")
 accounts = w3.eth.accounts
-account = accounts[0]
-your_count = st.sidebar.selectbox("Accounts", options=accounts)
+your_account = st.sidebar.selectbox("Accounts", options=accounts)
+account = accounts[accounts.index(your_account)]
 st.markdown("---")
-
+## this is for deveolpers to see what account it is in ganache
+st.write(accounts.index(your_account))
 ## Set variable to call buyNft. 
 string = select_package
 address = account
-
+value = w3.toWei(int(cost), 'ether')
 ### Set up purchase button 
 if st.button("Purchase Package"):
     tx_hash = contract.functions.buyNft(string, address).transact(
-        {'from': address, 'gas': 1000000, "value": int(cost)})
+        {'from': address, 'gas': 1000000, 'value' : value})
+    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
-    st.write(tx_hash)
+    st.write(dict(receipt))
     st.markdown("---")
     
 ### Generate NFT button
