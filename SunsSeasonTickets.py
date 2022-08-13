@@ -81,9 +81,9 @@ col5.metric("Losses ('21-'22)", "18", "-3", delta_color="inverse")
 
 ### Database of all the packages information 
 packages_database = {
-    "Standard Package": ["Standard Package", .05, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
-    "Ultra Package": ["Ultra Package", .08, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
-    "VIP Package": ["VIP Package", .09, vip_image, "Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season"]}
+    "Standard Package": ["Standard Package", 15, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
+    "Ultra Package": ["Ultra Package", 20, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
+    "VIP Package": ["VIP Package", 30, vip_image, "Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season"]}
 
 ### Cleaning up the dictionary 
 packages = ["Standard Package", "Ultra Package", "VIP Package"]
@@ -128,9 +128,8 @@ address = account
 if st.button("Purchase Package"):
     tx_hash = contract.functions.buyNft(string, address).transact(
         {'from': address, 'gas': 1000000, "value": int(cost)})
-    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
-    st.write(dict(receipt))
+    st.write(tx_hash)
     st.markdown("---")
     
 ### Generate NFT button
