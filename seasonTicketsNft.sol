@@ -2,26 +2,14 @@ pragma solidity ^0.5.5;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v2.5.0/contracts/token/ERC721/ERC721Full.sol";
 
-/* general structer of the website
-KEY NOTE:
- *Initial Buyer* 
-step one : 
-buy the Nft. using ganache well have the 10 address or people that are buying the Nft. 
-first account in ganache will be the "company" who deploys the contract so we have to do an initialBuyNft
-to get the first person who will buy from the "company"
-the nft needs to have a name, price in eth, who is selling it, and buyer
-once the sale has been completed, the buyer of the Nft should then register the Nft and have a mapping of Nft
+contract seasonTicket is ERC721Full {// makes it easier and cleans the code up for me. 
+    uint public corporateBalance;
+    // address payable PHX_owner;
+    // address initialBuyer;
+    // address seller;
+    // string name;
+    // uint price;
 
-step two:
-once we have gone over the buy of the Nft we want to make sure that we can get the _mintrandomly
-to pick one of the 10 wallets to give the ULT Nft. 
-
-step three:
-input the royalty function to allow the "inital owner" of the Nft to be able to collect royalties on post buy
-
-*/
-contract seasonTicket is ERC721Full {
-    uint public nftBalance;
     constructor() public ERC721Full("Suns", "PHX") {}
 // struct of the NFT (name of nft, how much, who is selling)
 
@@ -34,15 +22,25 @@ contract seasonTicket is ERC721Full {
     mapping(uint256 => Nft) public nftCollection;
     // mapping(string =>)
 
-    function buyNft (string memory name, address initialBuyer) public payable returns(string memory, address) {
+    function buyNft (
+        string memory name,
+         address initialBuyer
+         ) public payable returns(string memory, address) {
+            corporateBalance = address(this).balance;
         // make a require ### here ###
-         nftBalance = address(this).balance;
         // buyer sends money to the seasonTicket contract. 
         // nftBalance confirms the money is in the seasonTicket contract
         return(name, initialBuyer);
-    }
+        }
+        // this calls the balance of the users account
+        function balance(address owner) public view returns(uint accountBalance) {
+            accountBalance = owner.balance;
+                // wei_balance = w3.eth.get_balance(address);
+                // ether = w3.fromWei(wei_balance, 'ether')
+                // return ("ether");
+            }
 // the contract deployer (first account) pays the gas fees
-// with the initialRegisterNft 
+// with the initialRegisterNft // i can set global variables = my variables in function 
     function InitialRegisterNft (
         address payable initialBuyer,
         address payable seller,
@@ -67,7 +65,8 @@ contract seasonTicket is ERC721Full {
     }
 
     // function corporateWithdrawl(
-    //     address payable seller,
+    //     uint corporateBalance; 
+        
     // )
 /*
      function mintRandomly() public {

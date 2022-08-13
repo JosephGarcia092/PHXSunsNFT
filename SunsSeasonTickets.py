@@ -1,6 +1,7 @@
 import os
 import json
 from web3 import Web3
+from web3 import Account
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
@@ -10,24 +11,31 @@ load_dotenv()
 # Define and connect a new Web3 provider
 w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 
-# Make sure contract loads only once
+# Cache the contract on load
 @st.cache(allow_output_mutation=True)
+# Define the load_contract function
 def load_contract():
-# Load the contract ABI
-    with open(Path('./compiled/trial.json')) as f:
-            trial_abi = json.load(f)
 
+    # Load Art Gallery ABI
+    with open(Path('./compiled/trial2.json')) as f:
+        project_abi = json.load(f)
+
+    # Set the contract address (this is the address of the deployed contract)
     contract_address = os.getenv("SMART_CONTRACT_ADDRESS")
 
-        # Load the contract
+    # Get the contract
     contract = w3.eth.contract(
         address=contract_address,
-        abi=trial_abi
-        )
-
+        abi=project_abi
+    )
+    # Return the contract from the function
     return contract
 
+
+# Load the contract
 contract = load_contract()
+
+
 
 ### Setting up front end
 st.title('Phoenix Suns 2023 Season Tickets')
@@ -70,9 +78,9 @@ ultra_image = "https://cdn.dribbble.com/users/1785078/screenshots/3644361/media/
 vip_image = "https://cdn.dribbble.com/users/51266/screenshots/3916926/phoenix_basketball.png?compress=1&resize=500x400"
 
 packages_database = {
-    "Standard Package": ["Standard Package", .05, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
-    "Ultra Package": ["Ultra Package", .08, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
-    "VIP Package": ["VIP Package", .09, vip_image, "Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season"]}
+    "Standard Package": ["Standard Package", 2, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
+    "Ultra Package": ["Ultra Package", 5, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
+    "VIP Package": ["VIP Package", 10, vip_image, "Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season"]}
 
 packages = ["Standard Package", "Ultra Package", "VIP Package"]
 
@@ -102,32 +110,21 @@ st.sidebar.write(cost)
 
 st.sidebar.markdown("## Choose an Account")
 accounts = w3.eth.accounts
-address = st.sidebar.selectbox("Accounts", options=accounts)
+account = accounts[0]
+your_count = st.selectbox("Select Account", options=accounts) ## possible steamlit issue
 st.markdown("---")
-
-tokens = contract.functions.totalSupply().call()
-name = st.selectbox("Choose an Art Token ID", list(range(tokens)))
-initialBuyer = st.selectbox
-
-if st.button("Purchase Package"):
-    tx_hash = contract.functions.buyNft(name,address).transact({"from":w3.ethaccounts[0]})
-    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-st.write(receipt)
-st.markdown("---")
-
-
+## first try at attempt to get the variable to call buyNft. 
+string = select_package
+address = account
 ## i was trying to figure out the code of this. 
 if st.button("Purchase Package"):
-    tx_hash = contract.functions.buyNft(
-        name,
-        initialBuyer
-    ).transact({'from': address, 'gas': 1000000})
+    tx_hash = contract.functions.buyNft(string, address).transact(
+        {'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
-st.markdown("---")
-### end of code
-
+    st.markdown("---")
+# look up docs for .functions.account 
 
 
 
