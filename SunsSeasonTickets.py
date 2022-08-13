@@ -143,6 +143,17 @@ three = "1.3.png"
 image_list = [one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,two,two,two,two,two,two,two,two,three,three,three,three,three,three,three]
 random.shuffle(image_list)
 
-if st.button("Generate NFT"):
+if st.button("Generate & Register NFT"):
     st.image(image_list[0])
+    tx_hash = contract.functions.InitialRegisterNFT(
+        address,
+        address,
+        string,
+        uint256
+    ).transact({'from': address, 'gas': 1000000})
+    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    st.write("Transaction receipt mined:")
+    st.write(dict(receipt))
+    st.markdown("---")
+
     
