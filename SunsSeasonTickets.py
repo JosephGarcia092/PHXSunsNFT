@@ -17,7 +17,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 def load_contract():
 
     # Load Art Gallery ABI
-    with open(Path('./compiled/trial2.json')) as f:
+    with open(Path('./compiled/trial2.5.json')) as f:
         project_abi = json.load(f)
 
     # Set the contract address (this is the address of the deployed contract)
@@ -147,11 +147,11 @@ random.shuffle(image_list)
 
 if st.button("Generate & Register NFT"):
     st.image(image_list[0])
-    tx_hash = contract.functions.InitialRegisterNFT(
+    tx_hash = contract.functions.InitialRegisterNft(
         address,
         address,
         string,
-        uint256
+        value
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
