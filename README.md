@@ -29,7 +29,7 @@ During our initial data exploratino using Statistica we noticed a sharp decline 
 <br>
 
 ![image](https://user-images.githubusercontent.com/98990090/185029279-51736c3f-6275-42b7-a42a-e1bbb112409f.png) <br>
-* This graph shows even though Ticket Revenue was at an all time low in ‘20 and ‘21, total revenue was still higher than in ‘11 - ‘16<br>
+* This graph shows even though Ticket Revenue was at an all time low in ‘21, total revenue was still higher than in ‘11 - ‘16<br>
 
 ![image](https://user-images.githubusercontent.com/98990090/185029416-e3c949ed-989d-4ca4-857e-76c23f0e7544.png) <br>
   
@@ -37,19 +37,34 @@ During our initial data exploratino using Statistica we noticed a sharp decline 
 
 ## Facebook Prophet Analysis:
  <br>
-We chose to do Ticket Revenue alone for our predictive analysis as that's the weakest point of the revenue stream right now for the Suns. 
+We chose to do Ticket Revenue alone for our predictive analysis as that's the weakest point of the revenue stream right now for the Suns. Even though the tail end of the 2020 season and all of 2021 were a result of COVID - 19 there was already a natural small decline happening in ticket revenue starting after the 2017 season.
+
+
 
 
 # Remix Application:
 We used Remix to build our Season Ticket contracts that allows a user to purchase, register, and eventually flip the NFT for sale. The .sol file can be compiled and then deployed error free.
 
 # Streamlit Application:
-Our decentralized application allows the user to see the different packages available for purchase and what is included. As stated above in the 
+Our decentralized application allows the user to see the different packages available for purchase and what is included. As stated above in the background tab - we will have Standard, Ultra, and a VIP package available for purchase.
 
-![image](https://user-images.githubusercontent.com/98990090/185030035-6c34f482-bed0-4eea-909e-6b05baa0288c.png)
+![image](https://user-images.githubusercontent.com/98990090/185030035-6c34f482-bed0-4eea-909e-6b05baa0288c.png)<br>
+* Account users can see the packages, cost, their account balance, and the images available as NFT's.<br>
 
+![balance of acount and how many nfts](https://user-images.githubusercontent.com/98990090/185031088-f5c7bf57-2127-49f1-8baf-ccf7b94cee13.png)<br>
+* Account balance <br>
 
+![not enough funds](https://user-images.githubusercontent.com/98990090/185031166-6d8578b1-8102-43c4-891f-2c788fd75621.png)<br>
+* There is a fail safe if someone does NOT have enough in their balance to purchase a package they will receive this error. <br>
 
+![transaction hash](https://user-images.githubusercontent.com/98990090/185031237-6896e41a-a7ba-43ba-b942-4a35a805adb6.png) <br>
+* Transaction hash receipt of purchasing the NFT <br>
+
+![image generated](https://user-images.githubusercontent.com/98990090/185031292-44628fb3-a5b2-4c2a-86d0-e5c95cc8330d.png)<br>
+* NFT image generated upon registering the NFT <br>
+
+![image](https://user-images.githubusercontent.com/98990090/185031417-87f642c6-a966-4895-b513-737f34f49cdc.png) <br>
+* How many NFT's are associated with this specific address - also shows the token ID associated with the NFT and the account owner address.
 
 
 
