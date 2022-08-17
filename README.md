@@ -22,7 +22,7 @@ Packages available for purchase through the application:<br>
 * Additional library: Random <br>
 
 ## Data Analysis:
-During our initial data exploratino using Statistica we noticed a sharp decline in ticket revenue and sales starting in 2020 but a significant drop in 2021. This is very clearly associated with COVID-19 protocols and the limitation of audience led games. With restrictions lifting we still want to increase loyalty and ensure people choose to leave the comfort of their home to attend a live game. <br>
+During our initial data exploration using Statistica we noticed a sharp decline in ticket revenue and sales starting in 2020 but a significant drop in 2021. This is very clearly associated with COVID-19 protocols and the limitation of audience led games. With restrictions lifting we still want to increase loyalty and ensure people choose to leave the comfort of their home to attend a live game. <br>
 
 ![suns image](https://user-images.githubusercontent.com/98990090/185029046-07a49104-0a7f-44b2-b57d-b79c15040cc9.png)<br>
 * **This graph shows a decline in ticket revenue starting at 2020 and peak decline in the 2021 season largely due to COVID restrictions. The NBA still has strong revenue streams associated with merchandising, advertising, and television contracts which is why total revenue remained steady even though ticket revenue declined so severely.**
