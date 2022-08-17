@@ -17,7 +17,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 def load_contract():
 
     # Load Art Gallery ABI
-    with open(Path('./compiled/trial2.json')) as f:
+    with open(Path('./compiled/trial2.5.json')) as f:
         project_abi = json.load(f)
 
     # Set the contract address (this is the address of the deployed contract)
@@ -119,7 +119,20 @@ st.sidebar.markdown("## Choose an Account")
 accounts = w3.eth.accounts
 your_account = st.sidebar.selectbox("Accounts", options=accounts)
 account = accounts[accounts.index(your_account)]
+
+def get_balance(address):
+    """Using an Ethereum account address access the balance of Ether"""
+    # Get balance of address in Wei
+    wei_balance = w3.eth.get_balance(address)
+    # Convert Wei value to ether
+    ether = w3.fromWei(wei_balance, "ether")
+    # Return the value in ether
+    return ether
+ether = get_balance(your_account)
+st.sidebar.markdown("## Your Balance of Ether")
+st.sidebar.markdown(ether)
 st.markdown("---")
+
 ## this is for deveolpers to see what account it is in ganache
 st.write(accounts.index(your_account))
 ## Set variable to call buyNft. 
@@ -147,15 +160,35 @@ random.shuffle(image_list)
 
 if st.button("Generate & Register NFT"):
     st.image(image_list[0])
-    tx_hash = contract.functions.InitialRegisterNFT(
+    tx_hash = contract.functions.InitialRegisterNft(
         address,
         address,
         string,
-        uint256
+        value
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
     st.write(dict(receipt))
     st.markdown("---")
 
-    
+################################################################################
+# Display how many NFTs they own
+################################################################################
+
+NFT_id = st.number_input("Enter a NFT Token ID to display", value=0, step=1)
+if st.button("Display NFT"):
+    # Get the certificate owner
+    NFT_owner = contract.functions.ownerOf(NFT_id).call()
+    st.write(f"The NFT was awarded to {NFT_owner}")
+    st.markdown("---") 
+NFTs = contract.functions.balanceOf(address).call()
+st.write(f"This address owns {NFTs} NFTs")  
+
+# ################################################################################
+# # Display NFTs the account has or most recent NFT.
+# ################################################################################
+# NFTs = contract.functions.balanceOf(address).call()
+# st.write(f"This address owns {NFTs} NFTs")
+# st.markdown("## Check  Ownership and Display Token")
+# total_NFT_supply = contract.functions.totalSupply().call()
+# nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
