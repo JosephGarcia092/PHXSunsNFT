@@ -75,5 +75,5 @@ Our decentralized application allows the user to see the different packages avai
 3) More consumer data on NFT’s and ways to convince the Suns <br>
 
 
-GOOGLE COLAB LINK: https://colab.research.google.com/drive/1sjd4puCJURcCCgjzKbWQH53CCvBE0Wrg?usp=sharing
-SLIDE DECK: https://docs.google.com/presentation/d/1JB3d5qfx_wFswQ_b8jVx9ekmsv4oSt6rAgFGpve_a3k/edit#slide=id.g35f391192_00
+Google Colab: https://colab.research.google.com/drive/1sjd4puCJURcCCgjzKbWQH53CCvBE0Wrg?usp=sharing <br>
+Slide Deck: https://docs.google.com/presentation/d/1JB3d5qfx_wFswQ_b8jVx9ekmsv4oSt6rAgFGpve_a3k/edit#slide=id.g35f391192_00
