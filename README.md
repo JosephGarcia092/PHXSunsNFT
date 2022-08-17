@@ -11,7 +11,7 @@ We are wanting to create a pitch to the Phoenix Suns to adopt NFT's into their r
 Packages available for purchase through the application:<br>
 * **Standard Package:** Game ticket, NFT, and 5% off Merchandise for the Season<br>
 * **Ultra Package:** Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season<br>
-* **VIP Package:** Game ticket, $$100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season<br>
+* **VIP Package:** Game ticket, $100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season<br>
 
 ## Libaries Used:<br>
 * Jupyter Notebook <br>
