@@ -35,10 +35,13 @@ During our initial data exploratino using Statistica we noticed a sharp decline 
   
 # NEED TO ADD INFO ON THIS GRAPH
 
-## Facebook Prophet Analysis:
- <br>
-We chose to do Ticket Revenue alone for our predictive analysis as that's the weakest point of the revenue stream right now for the Suns. Even though the tail end of the 2020 season and all of 2021 were a result of COVID - 19 there was already a natural small decline happening in ticket revenue starting after the 2017 season.
+## Facebook Prophet Analysis:<br>
+We chose to do Ticket Revenue alone for our predictive analysis as that's the weakest point of the revenue stream right now for the Suns. Even though the tail end of the 2020 season and all of 2021 were a result of COVID - 19 there was already a natural small decline happening in ticket revenue starting after the 2017 season.<br>
+![image](https://user-images.githubusercontent.com/98990090/185031960-f67e5816-c197-4f41-a9fc-de44fdb7188b.png)<br>
+* **Per our predictions - if things were to stay the same and not change, ticket revenue would continue to decline for years to come**<br>
 
+![image](https://user-images.githubusercontent.com/98990090/185032058-ff9d3d1d-c1e2-414b-ae77-e23597fb1657.png)<br>
+* **The most likely case scenario for ticket revenue shows peaks and valleys of ticket revenue but overall a decline moving forward if nothing changes**
 
 
 
