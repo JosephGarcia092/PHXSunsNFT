@@ -25,15 +25,15 @@ Packages available for purchase through the application:<br>
 During our initial data exploratino using Statistica we noticed a sharp decline in ticket revenue and sales starting in 2020 but a significant drop in 2021. This is very clearly associated with COVID-19 protocols and the limitation of audience led games. With restrictions lifting we still want to increase loyalty and ensure people choose to leave the comfort of their home to attend a live game. <br>
 
 ![suns image](https://user-images.githubusercontent.com/98990090/185029046-07a49104-0a7f-44b2-b57d-b79c15040cc9.png)<br>
-* This graph shows a decline in ticket revenue starting at 2020 and peak decline in the 2021 season largely due to COVID restrictions. The NBA still has strong revenue streams associated with merchandising, advertising, and television contracts which is why total revenue remained steady even though ticket revenue declined so severely.
+* **This graph shows a decline in ticket revenue starting at 2020 and peak decline in the 2021 season largely due to COVID restrictions. The NBA still has strong revenue streams associated with merchandising, advertising, and television contracts which is why total revenue remained steady even though ticket revenue declined so severely.**
 <br>
 
 ![image](https://user-images.githubusercontent.com/98990090/185029279-51736c3f-6275-42b7-a42a-e1bbb112409f.png) <br>
-* This graph shows even though Ticket Revenue was at an all time low in ‘21, total revenue was still higher than in ‘11 - ‘16<br>
+* **This graph shows even though Ticket Revenue was at an all time low in ‘21, total revenue was still higher than in ‘11 - ‘16**<br>
 
 ![image](https://user-images.githubusercontent.com/98990090/185029416-e3c949ed-989d-4ca4-857e-76c23f0e7544.png) <br>
-  
-# NEED TO ADD INFO ON THIS GRAPH
+* **2021 showed a dramatic loss in ticket revenue, due to COVID and its effect on attendance protocols, on average the Phoenix Suns are in the lower tier of ticket revenue compared to other teams in the NBA.**
+* **The three highest grossing teams also have the highest ticket revenue (Warriors, Lakers, Knicks).**
 
 ## Facebook Prophet Analysis:<br>
 We chose to do Ticket Revenue alone for our predictive analysis as that's the weakest point of the revenue stream right now for the Suns. Even though the tail end of the 2020 season and all of 2021 were a result of COVID - 19 there was already a natural small decline happening in ticket revenue starting after the 2017 season.<br>
