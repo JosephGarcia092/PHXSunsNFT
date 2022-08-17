@@ -1,7 +1,9 @@
 # Phoenix Suns Adoption of NFT's
 <br>![1 0](https://user-images.githubusercontent.com/98990090/185028051-0ced8559-3933-41c8-931c-861be9b165b2.png)
 
-Project created by Rachel Carroll, Joseph Garcia, Matt Pretel
+Project created by Rachel Carroll, Joseph Garcia, Matt Pretel<br>
+Google Colab: https://colab.research.google.com/drive/1sjd4puCJURcCCgjzKbWQH53CCvBE0Wrg?usp=sharing <br>
+Slide Deck: https://docs.google.com/presentation/d/1JB3d5qfx_wFswQ_b8jVx9ekmsv4oSt6rAgFGpve_a3k/edit#slide=id.g35f391192_00
 
 ## Background:
 We are wanting to create a pitch to the Phoenix Suns to adopt NFT's into their revenue stream using different ticket packages. The NBA has reached an all time low for ticket revenue in 2021 since 2012 - the majority of the NBA's revenue stream comes from advertising, merchandising partnerships (like Adidas), and television contracts. We are also hoping to increase season long loyalty with added benefits like discounts on merchandise. We built a contract using Remix and connected through MetaMask and Ganache for purchasing via a D'app on Streamlit.
@@ -73,7 +75,3 @@ Our decentralized application allows the user to see the different packages avai
 1) Create a new image for each NFT - unique to each person <br>
 2) Royalty options <br>
 3) More consumer data on NFT’s and ways to convince the Suns <br>
-
-
-Google Colab: https://colab.research.google.com/drive/1sjd4puCJURcCCgjzKbWQH53CCvBE0Wrg?usp=sharing <br>
-Slide Deck: https://docs.google.com/presentation/d/1JB3d5qfx_wFswQ_b8jVx9ekmsv4oSt6rAgFGpve_a3k/edit#slide=id.g35f391192_00
