@@ -69,10 +69,10 @@ Our decentralized application allows the user to see the different packages avai
 ![image](https://user-images.githubusercontent.com/98990090/185031417-87f642c6-a966-4895-b513-737f34f49cdc.png) <br>
 * **How many NFT's are associated with this specific address - also shows the token ID associated with the NFT and the account owner address**
 
-
-
-
-
+# What could we do differently if we had more time? <br>
+1) Create a new image for each NFT - unique to each person <br>
+2) Royalty options <br>
+3) More consumer data on NFT’s and ways to convince the Suns <br>
 
 
 GOOGLE COLAB LINK: https://colab.research.google.com/drive/1sjd4puCJURcCCgjzKbWQH53CCvBE0Wrg?usp=sharing
