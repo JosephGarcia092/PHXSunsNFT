@@ -37,6 +37,7 @@ contract = load_contract()
 
 ### Setting up front end
 st.title('Phoenix Suns 2023 Season Tickets')
+
 ### Titles and subheaders
 st.header('Welcome to the Future! Introducing NFT Season Tickets!')
 st.subheader("Upon purchase of your package you will be able to generate your own NFT! Each NFT will be unique and individual to you, make sure you hold on to them because you will receive a discount on all future merchandise.")
@@ -70,7 +71,7 @@ with col2:
 ### Setting up image and descriptor for package #3
 with col3:
     st.header("VIP Package")
-    st.write("Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season")
+    st.write("Game ticket, $$100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season")
     st.write("Tickets will be available in Section 101 - 105 or 111 - 116 lower levels (not including courtside or rows 1-8)")
     st.image(vip_image)
 
@@ -83,7 +84,7 @@ col5.metric("Losses ('21-'22)", "18", "-3", delta_color="inverse")
 packages_database = {
     "Standard Package": ["Standard Package", 15, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
     "Ultra Package": ["Ultra Package", 20, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
-    "VIP Package": ["VIP Package", 30, vip_image, "Game ticket, $$100 F&B Package, Photo with Mascot, Raffle for $10k, NFT, and 15% off Merchandise for the Season"]}
+    "VIP Package": ["VIP Package", 30, vip_image, "Game ticket, $$100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season"]}
 
 ### Cleaning up the dictionary 
 packages = ["Standard Package", "Ultra Package", "VIP Package"]
@@ -120,6 +121,7 @@ accounts = w3.eth.accounts
 your_account = st.sidebar.selectbox("Accounts", options=accounts)
 account = accounts[accounts.index(your_account)]
 
+# 
 def get_balance(address):
     """Using an Ethereum account address access the balance of Ether"""
     # Get balance of address in Wei
@@ -133,8 +135,9 @@ st.sidebar.markdown("## Your Balance of Ether")
 st.sidebar.markdown(ether)
 st.markdown("---")
 
-## this is for deveolpers to see what account it is in ganache
+## This is for deveolpers to see what account it is in ganache
 st.write(accounts.index(your_account))
+
 ## Set variable to call buyNft. 
 string = select_package
 address = account
@@ -149,6 +152,7 @@ if st.button("Purchase Package"):
     st.write(dict(receipt))
     st.markdown("---")
 
+### Ranomizing the images to generate
 import random
 one = Path("Desktop/PHXSunsNFT/sunsImages/1.0.png")
 two = Path("Desktop/PHXSunsNFT/sunsImages/1.14.png")
@@ -156,6 +160,7 @@ three = Path("Desktop/PHXSunsNFT/sunsImages/1.3.png")
 image_list = [one, two, three]
 random.shuffle(image_list)
 
+### Creating button to register and generate the NFT
 if st.button("Generate & Register NFT"):
     st.image(image_list[0])
     tx_hash = contract.functions.InitialRegisterNft(
@@ -173,18 +178,27 @@ if st.button("Generate & Register NFT"):
 ################################################################################
 # Display how many NFTs they own
 ################################################################################
-
-NFT_id = st.number_input("Enter a NFT Token ID to display Owner", value=0, step=1)
-if st.button("Display NFT"):
+NFT_id = st.number_input("Enter a NFT Token ID to Display Owner", value=0, step=1)
+if st.button("Display Account Owner"):
     # Get the certificate owner
     NFT_owner = contract.functions.ownerOf(NFT_id).call()
     st.write(f"The NFT was awarded to {NFT_owner}")
     st.markdown("---") 
 
+NFTs = contract.functions.balanceOf(address).call()
+st.write(f"This address owns {NFTs} NFTs") 
+
+### Download image of NFT to local file
+st.download_button(label='Download Image',
+                        data= open(image_list[0], 'rb').read(),
+                        file_name='imagename.png',
+                        mime='image/png')
+
 # ################################################################################
 # Display NFTs the account has or most recent NFT. was on the to do list 
 # we did not do this WHY???
 # ################################################################################
+
 # NFTs = contract.functions.balanceOf(address).call()
 # st.write(f"This address owns {NFTs} NFTs")
 # st.markdown("## Check  Ownership and Display Token")
@@ -210,3 +224,9 @@ if st.button("Flip It"):
 
 
 
+=======
+#NFTs = contract.functions.balanceOf(address).call()
+#st.write(f"This address owns {NFTs} NFTs")
+#st.markdown("## Check  Ownership and Display Token")
+#total_NFT_supply = contract.functions.totalSupply().call()
+#nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
