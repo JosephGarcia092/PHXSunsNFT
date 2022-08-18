@@ -31,7 +31,6 @@ def load_contract():
     # Return the contract from the function
     return contract
 
-
 # Load the contract
 contract = load_contract()
 
@@ -194,36 +193,37 @@ st.download_button(label='Download Image',
                         file_name='imagename.png',
                         mime='image/png')
 
-# ################################################################################
-# Display NFTs the account has or most recent NFT. was on the to do list 
-# we did not do this WHY???
-# ################################################################################
+
+
+
+
+
+#### Additional work for the future
 
 # NFTs = contract.functions.balanceOf(address).call()
 # st.write(f"This address owns {NFTs} NFTs")
 # st.markdown("## Check  Ownership and Display Token")
 # total_NFT_supply = contract.functions.totalSupply().call()
 # nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
-NFTs = contract.functions.balanceOf(address).call()
-st.write(f"This address owns {NFTs} NFTs")
-st.title(f"Welcome to Resell")
-st.subheader(f"The name is obvious, Here is how you can Resell")
-st.write(f"Name your Price, Put where to send it, Flip it. Simple")
-st.markdown("---") 
+
+#NFTs = contract.functions.balanceOf(address).call()
+#st.write(f"This address owns {NFTs} NFTs")
+#st.title(f"Welcome to Resell")
+#st.subheader(f"The name is obvious, Here is how you can Resell")
+#st.write(f"Name your Price, Put where to send it, Flip it. Simple")
+#st.markdown("---") 
+
 ################################################################################
 # flip NFTs
 ################################################################################
-st.markdown("price ")
-if st.button("Flip It"):
-    tx_hash = contract.functions.buyNft(string, address).transact(
-        {'from': address, 'gas': 1000000, 'value' : value})
-    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    st.write("Transaction receipt mined:")
-    st.write(dict(receipt))
-    st.markdown("---")
-
-
-
+#st.markdown("price ")
+#if st.button("Flip It"):
+    #tx_hash = contract.functions.buyNft(string, address).transact(
+        #{'from': address, 'gas': 1000000, 'value' : value})
+    #receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    #st.write("Transaction receipt mined:")
+    #st.write(dict(receipt))
+    #st.markdown("---")
 =======
 #NFTs = contract.functions.balanceOf(address).call()
 #st.write(f"This address owns {NFTs} NFTs")
