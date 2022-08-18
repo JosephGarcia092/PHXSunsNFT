@@ -143,6 +143,7 @@ string = select_package
 address = account
 value = w3.toWei(int(cost), 'ether')
 ### Set up purchase button 
+
 if st.button("Purchase Package"):
     tx_hash = contract.functions.buyNft(string, address).transact(
         {'from': address, 'gas': 1000000, 'value' : value})
@@ -153,10 +154,10 @@ if st.button("Purchase Package"):
 
 ### Ranomizing the images to generate
 import random
-one = "1.0.png"
-two = "1.14.png"
-three = "1.3.png"
-image_list = [one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,two,two,two,two,two,two,two,two,three,three,three,three,three,three,three]
+one = Path("Desktop/PHXSunsNFT/sunsImages/1.0.png")
+two = Path("Desktop/PHXSunsNFT/sunsImages/1.14.png")
+three = Path("Desktop/PHXSunsNFT/sunsImages/1.3.png")
+image_list = [one, two, three]
 random.shuffle(image_list)
 
 ### Creating button to register and generate the NFT
@@ -166,7 +167,8 @@ if st.button("Generate & Register NFT"):
         address,
         address,
         string,
-        value
+        value,
+        string
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
@@ -176,13 +178,13 @@ if st.button("Generate & Register NFT"):
 ################################################################################
 # Display how many NFTs they own
 ################################################################################
-
 NFT_id = st.number_input("Enter a NFT Token ID to Display Owner", value=0, step=1)
 if st.button("Display Account Owner"):
     # Get the certificate owner
     NFT_owner = contract.functions.ownerOf(NFT_id).call()
     st.write(f"The NFT was awarded to {NFT_owner}")
     st.markdown("---") 
+
 NFTs = contract.functions.balanceOf(address).call()
 st.write(f"This address owns {NFTs} NFTs") 
 
@@ -193,8 +195,36 @@ st.download_button(label='Download Image',
                         mime='image/png')
 
 # ################################################################################
-# # Display NFTs the account has or most recent NFT.
+# Display NFTs the account has or most recent NFT. was on the to do list 
+# we did not do this WHY???
 # ################################################################################
+
+# NFTs = contract.functions.balanceOf(address).call()
+# st.write(f"This address owns {NFTs} NFTs")
+# st.markdown("## Check  Ownership and Display Token")
+# total_NFT_supply = contract.functions.totalSupply().call()
+# nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
+NFTs = contract.functions.balanceOf(address).call()
+st.write(f"This address owns {NFTs} NFTs")
+st.title(f"Welcome to Resell")
+st.subheader(f"The name is obvious, Here is how you can Resell")
+st.write(f"Name your Price, Put where to send it, Flip it. Simple")
+st.markdown("---") 
+################################################################################
+# flip NFTs
+################################################################################
+st.markdown("price ")
+if st.button("Flip It"):
+    tx_hash = contract.functions.buyNft(string, address).transact(
+        {'from': address, 'gas': 1000000, 'value' : value})
+    receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    st.write("Transaction receipt mined:")
+    st.write(dict(receipt))
+    st.markdown("---")
+
+
+
+=======
 #NFTs = contract.functions.balanceOf(address).call()
 #st.write(f"This address owns {NFTs} NFTs")
 #st.markdown("## Check  Ownership and Display Token")
