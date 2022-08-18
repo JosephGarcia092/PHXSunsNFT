@@ -123,7 +123,7 @@
 						"type": "address"
 					},
 					{
-						"name": "initialBuyer",
+						"name": "Buyer",
 						"type": "address"
 					},
 					{
@@ -208,20 +208,6 @@
 					}
 				],
 				"name": "tokenByIndex",
-				"outputs": [
-					{
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"payable": false,
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"constant": true,
-				"inputs": [],
-				"name": "nftBalance",
 				"outputs": [
 					{
 						"name": "",
@@ -343,6 +329,41 @@
 				"type": "function"
 			},
 			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "initialBuyer",
+						"type": "address"
+					},
+					{
+						"name": "seller",
+						"type": "address"
+					},
+					{
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"name": "price",
+						"type": "uint256"
+					},
+					{
+						"name": "tokenURI",
+						"type": "string"
+					}
+				],
+				"name": "InitialRegisterNft",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"constant": true,
 				"inputs": [],
 				"name": "symbol",
@@ -375,26 +396,9 @@
 				"type": "function"
 			},
 			{
-				"constant": false,
-				"inputs": [
-					{
-						"name": "initialBuyer",
-						"type": "address"
-					},
-					{
-						"name": "seller",
-						"type": "address"
-					},
-					{
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"name": "price",
-						"type": "uint256"
-					}
-				],
-				"name": "InitialRegisterNft",
+				"constant": true,
+				"inputs": [],
+				"name": "corporateBalance",
 				"outputs": [
 					{
 						"name": "",
@@ -402,7 +406,7 @@
 					}
 				],
 				"payable": false,
-				"stateMutability": "nonpayable",
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -444,6 +448,25 @@
 					{
 						"name": "",
 						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "balance",
+				"outputs": [
+					{
+						"name": "accountBalance",
+						"type": "uint256"
 					}
 				],
 				"payable": false,
@@ -761,9 +784,9 @@
 			]
 		},
 		"seasonTicketsNft.sol": {
-			"keccak256": "0xa79ea5d182bc6be43e50401094093e3dec818c93a44f333e14894d5e2e373f39",
+			"keccak256": "0x52489dcf6a64c8ad75d1d745452b2470ef216fd484365c9822744c5f0650d102",
 			"urls": [
-				"bzzr://f9db1b9a6c043fe89860bafa18985a9ec1d0e7b0ccc0338d1ca326eb9c77c1f7"
+				"bzzr://996633b150bd91b75775b1f231c0294f37ecd90819c965b15c8275eda381dcde"
 			]
 		}
 	},
