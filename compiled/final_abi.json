@@ -117,7 +117,7 @@
 				"type": "address"
 			},
 			{
-				"name": "initialBuyer",
+				"name": "Buyer",
 				"type": "address"
 			},
 			{

@@ -17,7 +17,7 @@ w3 = Web3(Web3.HTTPProvider(os.getenv("WEB3_PROVIDER_URI")))
 def load_contract():
 
     # Load Art Gallery ABI
-    with open(Path('./compiled/trial2.5.json')) as f:
+    with open(Path('./compiled/final_abi.json')) as f:
         project_abi = json.load(f)
 
     # Set the contract address (this is the address of the deployed contract)
@@ -81,9 +81,9 @@ col5.metric("Losses ('21-'22)", "18", "-3", delta_color="inverse")
 
 ### Database of all the packages information 
 packages_database = {
-    "Standard Package": ["Standard Package", 15, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
-    "Ultra Package": ["Ultra Package", 20, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
-    "VIP Package": ["VIP Package", 30, vip_image, "Game ticket, $$100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season"]}
+    "Standard Package": ["Standard Package", 1, standard_image, "Game ticket, NFT, and 5% off Merchandise for the Season"],
+    "Ultra Package": ["Ultra Package", 5, ultra_image, "Game ticket, $40 F&B Package, NFT, and 10% off Merchandise for the Season"],
+    "VIP Package": ["VIP Package", 7, vip_image, "Game ticket, $$100 F&B Package, Signed Photo with Suns Team, NFT, and 15% off Merchandise for the Season"]}
 
 ### Cleaning up the dictionary 
 packages = ["Standard Package", "Ultra Package", "VIP Package"]
@@ -153,10 +153,10 @@ if st.button("Purchase Package"):
 
 ### Ranomizing the images to generate
 import random
-one = Path("Desktop/PHXSunsNFT/sunsImages/1.0.png")
-two = Path("Desktop/PHXSunsNFT/sunsImages/1.14.png")
-three = Path("Desktop/PHXSunsNFT/sunsImages/1.3.png")
-image_list = [one, two, three]
+one = "./sunsImages/1.0.png"
+two = "./sunsImages/1.14.png"
+three = "./sunsImages/1.3.png"
+image_list = [one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,one,two,two,two,two,two,two,two,two,three,three,three,three,three,three,three]
 random.shuffle(image_list)
 
 ### Creating button to register and generate the NFT
@@ -167,7 +167,6 @@ if st.button("Generate & Register NFT"):
         address,
         string,
         value,
-        string
     ).transact({'from': address, 'gas': 1000000})
     receipt = w3.eth.waitForTransactionReceipt(tx_hash)
     st.write("Transaction receipt mined:")
@@ -192,40 +191,3 @@ st.download_button(label='Download Image',
                         data= open(image_list[0], 'rb').read(),
                         file_name='imagename.png',
                         mime='image/png')
-
-
-
-
-
-#### Additional work for the future
-
-# NFTs = contract.functions.balanceOf(address).call()
-# st.write(f"This address owns {NFTs} NFTs")
-# st.markdown("## Check  Ownership and Display Token")
-# total_NFT_supply = contract.functions.totalSupply().call()
-# nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
-
-#NFTs = contract.functions.balanceOf(address).call()
-#st.write(f"This address owns {NFTs} NFTs")
-#st.title(f"Welcome to Resell")
-#st.subheader(f"The name is obvious, Here is how you can Resell")
-#st.write(f"Name your Price, Put where to send it, Flip it. Simple")
-#st.markdown("---") 
-
-################################################################################
-# flip NFTs
-################################################################################
-#st.markdown("price ")
-#if st.button("Flip It"):
-    #tx_hash = contract.functions.buyNft(string, address).transact(
-        #{'from': address, 'gas': 1000000, 'value' : value})
-    #receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-    #st.write("Transaction receipt mined:")
-    #st.write(dict(receipt))
-    #st.markdown("---")
-=======
-#NFTs = contract.functions.balanceOf(address).call()
-#st.write(f"This address owns {NFTs} NFTs")
-#st.markdown("## Check  Ownership and Display Token")
-#total_NFT_supply = contract.functions.totalSupply().call()
-#nft_List_Id = st.selectbox("Artwork Tokens", list(range(total_NFT_supply)))
